@@ -1,6 +1,0 @@
-/* parent > child
-    section > p{ color: blue}
-    해당 사항이 child에만 적용되고 그 하위의 손자 등등에게 적용되지 않음*/
-#container > ul{
-    border: 1px dotted blue;
-}

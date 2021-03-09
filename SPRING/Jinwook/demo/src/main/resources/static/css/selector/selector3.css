@@ -1,5 +1,0 @@
-/* h1 바로 다음에 있는 p만 적용이되게함*/
-h1 + p{
-    color: blue;
-    font-weight: bold;
-}

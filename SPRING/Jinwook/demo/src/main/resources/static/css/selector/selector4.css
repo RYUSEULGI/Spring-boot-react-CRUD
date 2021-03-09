@@ -1,5 +1,0 @@
-/* ~는 h1 뒤 모든 p에게 적용*/
-h1 ~ p{
-    color: blue;
-    font-weight: bold;
-}
