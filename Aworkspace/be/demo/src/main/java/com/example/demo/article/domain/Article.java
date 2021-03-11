@@ -1,17 +1,24 @@
 package com.example.demo.article.domain;
 
-import java.io.Serializable;
+import javax.persistence.*;
 
-import org.springframework.stereotype.Component;
-
-import lombok.Data;
-
-@Component @Data
-public class Article implements Serializable{
-	private static final long serialVersionUID = 1L;
+@Entity
+@Table(name = "articles")
+public class Article {
+	
+	@Id
+	@GeneratedValue
 	private long articleNo;
+	
+	@Column(name = "user_no")
 	private long userNo;
+	
+	@Column(name = "title")
 	private String title;
+	
+	@Column(name = "content")
 	private String content;
+	
+	@Column(name = "reg_date")
 	private String regDate;
 }
