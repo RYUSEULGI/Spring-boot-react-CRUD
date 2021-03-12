@@ -1,4 +1,4 @@
-package com.example.demo.article.repository;
+package com.example.demo.bbs.repository;
 
 import org.springframework.stereotype.Repository;
 

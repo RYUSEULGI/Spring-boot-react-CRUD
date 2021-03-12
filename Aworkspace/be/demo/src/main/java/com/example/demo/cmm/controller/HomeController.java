@@ -1,5 +1,5 @@
 package com.example.demo.cmm.controller;
 
-public abstract class AbstractController {
+public abstract class HomeController {
 
 }
