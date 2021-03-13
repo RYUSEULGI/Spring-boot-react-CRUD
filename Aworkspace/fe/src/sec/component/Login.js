@@ -1,8 +1,7 @@
 import avatar from './logo192.png'
-import './Login.css'
+import './css/Login.css'
 
-const Login = () => {
-    const url = '#';
+const Login = () => (
     <>
         <form method="post">
             <div className="imgcontainer">
@@ -24,11 +23,11 @@ const Login = () => {
 
             <div className="container" style={{backgroundColor:"#f1f1f1"}}>
                 <button type="button" className="cancelbtn">Cancel</button>
-                <span className="psw">Forgot <a href={url}>password?</a></span>
+                <span className="psw">Forgot <a href="#">password?</a></span>
             </div>
         </form>
     </>
-}
+)
 
 export default Login
 
