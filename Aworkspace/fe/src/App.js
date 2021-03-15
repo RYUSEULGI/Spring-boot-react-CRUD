@@ -1,10 +1,19 @@
-import { BrowerRouter as Router } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Route } from 'react-router-dom'
+import Home from './cmm/container/Home'
+import Counter from './cmm/container/Counter'
+import Login from './sec/container/Login'
+import Signup from './uss/container/Signup'
 
-const App = () => (
-  <> 
-    <h1>Main</h1>
-    <button>signup</button>
-    <button>signin</button>
-  </>
-)
-export default App;
+const App = () => {
+  return (
+    <>
+      <Route path="/" component={Home} exact/>
+      <Route path="/Counter" component={Counter}/>
+      <Route path="/Login" component={Login}/>
+      <Route path="/Signup" component={Signup}/>
+    </>
+  )
+}
+
+export default App
