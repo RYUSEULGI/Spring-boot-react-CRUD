@@ -1,0 +1,9 @@
+package com.example.demo.cmm.domain;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name ="commons")
+public class Common {
+
+}

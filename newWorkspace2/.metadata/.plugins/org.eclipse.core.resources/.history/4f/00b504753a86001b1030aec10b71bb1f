@@ -1,0 +1,10 @@
+package com.example.demo.cmm.domain;
+
+import org.codehaus.plexus.component.annotations.Component;
+
+import lombok.Data;
+
+@Component @Data
+public class CommonDto {
+	
+}
