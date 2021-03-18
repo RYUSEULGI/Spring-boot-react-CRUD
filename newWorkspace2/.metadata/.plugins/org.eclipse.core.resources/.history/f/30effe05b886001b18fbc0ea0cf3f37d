@@ -1,9 +1,0 @@
-package com.example.demo.cmm.repository;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.example.demo.cmm.domain.Common;
-
-public interface CommonRepository extends JpaRepository<Common, Long>{
-
-}
