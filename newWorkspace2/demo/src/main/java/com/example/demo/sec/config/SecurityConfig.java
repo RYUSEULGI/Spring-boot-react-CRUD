@@ -10,9 +10,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.example.demo.sec.domain.JwtTokenProvider;
 import com.example.demo.sec.filter.CustomAuthenticationEntryPoint;
 import com.example.demo.sec.filter.JwtAuthenticationFilter;
+
 @Configuration
-public class SecurityConfig  extends WebSecurityConfigurerAdapter{
+public class SecurityConfig extends WebSecurityConfigurerAdapter{
+	
 	@Autowired JwtTokenProvider jwtTokenProvider;
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.httpBasic().disable()
