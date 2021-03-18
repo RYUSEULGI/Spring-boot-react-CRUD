@@ -1,5 +1,16 @@
 package com.example.demo.uss.repository;
 
-public class UserRepositoryImpl{
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.uss.domain.UserDto;
+
+@Repository
+public class UserRepositoryImpl implements UserCustomRepository{
+
+	@Override
+	public UserDto login(String username, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

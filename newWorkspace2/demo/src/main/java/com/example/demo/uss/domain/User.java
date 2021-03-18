@@ -3,22 +3,36 @@ package com.example.demo.uss.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name="users")
+public class User{
+
+    @Id
+    @Column(name = "user_no")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long userNo;
+
+    @Column(name = "username")
+    private String username;
+
+    @Column(name = "password")
+    private String password;
+    
+	@Column(name = "authority")
+	private String authority;
 	
-	@Id
-	@GeneratedValue
-	private long userNo;
-	
-	@Column(name="user_id")
-	private String userId;
-	
-	@Column(name="passwd")
-	private String passWd;
-	
-	@Column(name="user_name")
-	private String userName;
-	
-	@Column(name="email")
-	private String email;
+    @Column(name = "enabled")
+    private boolean enabled;
+    
+    @Column(name = "name")
+    private String name;
+    
+    @Column(name = "email")
+    private String email;
+    
+    @Column(name = "birthday")
+    private String birthday;
+    
+    @Column(name = "gender")
+    private String gender;
+
 }
