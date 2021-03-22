@@ -1,5 +1,6 @@
 package com.example.demo.uss.service;
 
-public class AdminServiceImpl {
+
+public class AdminServiceImpl{
 
 }

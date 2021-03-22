@@ -1,3 +1,4 @@
+import React from 'react'
 import './css/Signup.css'
 
 const UserEdit = () => (

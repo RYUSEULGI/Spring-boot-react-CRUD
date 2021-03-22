@@ -1,5 +1,5 @@
 package com.example.demo.uss.repository;
 
-public class AdminRepository {
+public interface AdminRepository{
 
 }
