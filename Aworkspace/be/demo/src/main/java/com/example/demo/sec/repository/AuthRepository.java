@@ -1,5 +1,5 @@
 package com.example.demo.sec.repository;
 
-public class LoginRepository {
+public class AuthRepository {
 
 }

@@ -19,7 +19,8 @@ public class Proxy {
 	public Function<Double, Double> ceil = Math::ceil;
 	public Function<Double, Double> floor = Math::floor;
 	public Supplier<Double> random = Math::random;
-	public static BiFunction<Integer, Integer, Integer> rangeRandom = (t,u) -> ((int)(Math.random() * (u - t)) + t);
+	public static BiFunction<Integer, Integer, Integer> rangeUnderRandom = (t,u) -> ((int)(Math.random() * (u - t)) + t);
+	public static BiFunction<Integer, Integer, Integer> rangeBelowRandom = (t,u) -> ((int)(Math.random() * u) + t);
 	public Function<Double, Double> rint = Math::rint;
 	public Function<Double, Long> round = Math::round;
 	public Supplier<User> newUser = User::new;

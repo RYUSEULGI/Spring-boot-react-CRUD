@@ -2,6 +2,9 @@ package com.example.demo.cmm.util;
 
 import java.util.Arrays;
 import java.util.List;
+
+import com.example.demo.uss.domain.User;
+
 import static java.util.Collections.*;
 import static com.example.demo.cmm.util.Proxy.*;
 
@@ -10,9 +13,8 @@ public class DummyGenerator{
 	public String makeUsername() {
 		List<String> username = Arrays.asList("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split(""));
 		shuffle(username);
-		username.subString(0,4);
 		
-		return ;
+		return username.get(0) + username.get(1) + username.get(2) + username.get(3);
 	}
 	
 	public String makeName() {
@@ -64,19 +66,35 @@ public class DummyGenerator{
 	}
 	
 	public String makeBirthday() {
-		int date = rangeRandom.apply(1,28);
-		int date2 = rangeRandom.apply(1,29);
-		int date3 = rangeRandom.apply(1,30);
-		int date4 = rangeRandom.apply(1,31);
+		return myCalender(1970,2020); 
+	}
+
+	private String myCalender(int start, int end) {
+		int year = rangeUnderRandom.apply(start,end);
+		int month = rangeUnderRandom.apply(1,12);
+		int date = 0;
+		int date28 = rangeUnderRandom.apply(1,28);
+		int date29 = rangeUnderRandom.apply(1,29);
+		int date30 = rangeUnderRandom.apply(1,30);
+		int date31 = rangeUnderRandom.apply(1,31);
 		
-		if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
+		switch(month){
+			case 2: 
+				date = (year % 4 == 0 && year % 100 != 0) || year % 400 == 0 ? date29 : date28;
+				break;
+			case 4: case 6: case 9: case 11: 
+				date = date30;
+				break;
+			default: date = date31;
 		}
-		
-		return "";
+		return year + "-" + month + "-" + date;
 	}
 	
 	public String makeRegdate() {
-		List<Integer> year = Arrays.asList((int)(Math.random() * 30) + 1970);
-		return ;
+		return myCalender(2019,2020);
+	}
+	
+	public User makeUser() {
+		return new User( makeName(), "1",  makeUsername(), makeEmail(),  makeBirthday(),  makeGender(), makeRegdate());
 	}
 }
