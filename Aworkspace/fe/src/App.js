@@ -4,16 +4,20 @@ import Home from "./cmm/container/Home";
 import Counter from "./cmm/container/Counter";
 import Login from "./sec/container/Login";
 import Signup from "./uss/container/Signup";
+import ItemList from "./item/container/ItemLilst";
+import ItemCreate from "./item/container/ItemCreate";
 
 const App = () => {
-	return (
-		<>
-			<Route path="/" component={Home} exact />
-			<Route path="/Counter" component={Counter} />
-			<Route path="/Login" component={Login} />
-			<Route path="/Signup" component={Signup} />
-		</>
-	);
+    return (
+        <>
+            <Route path="/" component={Home} exact />
+            <Route path="/Counter" component={Counter} />
+            <Route path="/Login" component={Login} />
+            <Route path="/Signup" component={Signup} />
+            <Route path="/items/list" component={ItemList} />
+            <Route path="/items/create" component={ItemCreate} />
+        </>
+    );
 };
 
 export default App;
