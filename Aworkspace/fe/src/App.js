@@ -6,6 +6,7 @@ import Login from "./sec/container/Login";
 import Signup from "./uss/container/Signup";
 import ItemList from "./item/container/ItemLilst";
 import ItemCreate from "./item/container/ItemCreate";
+import ItemRead from "./item/container/ItemRead";
 
 const App = () => {
     return (
@@ -15,6 +16,7 @@ const App = () => {
             <Route path="/Login" component={Login} />
             <Route path="/Signup" component={Signup} />
             <Route path="/items/list" component={ItemList} />
+            <Route path="/items/item-number/:id" component={ItemRead} />
             <Route path="/items/create" component={ItemCreate} />
         </>
     );
