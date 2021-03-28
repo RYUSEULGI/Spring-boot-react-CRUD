@@ -32,7 +32,10 @@ const Create = () => {
                 releaseDate,
                 soldOut,
             })
-            .then((res) => console.log(res))
+            .then((res) => {
+                console.log(res);
+                window.location = "/items/list";
+            })
             .catch((err) => console.log(err));
     };
 
