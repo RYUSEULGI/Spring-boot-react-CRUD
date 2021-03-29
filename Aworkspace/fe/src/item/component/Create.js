@@ -1,43 +1,49 @@
-import axios from "axios";
-import React, { useState } from "react";
+import axios from 'axios';
+import React, { useState, useCallback } from 'react';
 
 const Create = () => {
     const [inputs, setInputs] = useState({
-        itemBrand: "",
-        itemName: "",
-        modelNo: "",
-        itemColor: "",
-        releaseDate: "",
+        itemBrand: '',
+        itemName: '',
+        modelNo: '',
+        itemColor: '',
+        releaseDate: '',
     });
 
     const { itemBrand, itemName, modelNo, itemColor, releaseDate, soldOut } = inputs;
 
-    const handleChange = (e) => {
-        const { value, name } = e.target;
-        setInputs({
-            ...inputs,
-            [name]: value,
-        });
-    };
+    const handleChange = useCallback(
+        (e) => {
+            const { value, name } = e.target;
+            setInputs({
+                ...inputs,
+                [name]: value,
+            });
+        },
+        [inputs]
+    );
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("작동");
-        axios
-            .post("http://localhost:8080/items", {
-                itemBrand,
-                itemName,
-                modelNo,
-                itemColor,
-                releaseDate,
-                soldOut,
-            })
-            .then((res) => {
-                console.log(res);
-                window.location = "/items/list";
-            })
-            .catch((err) => console.log(err));
-    };
+    const handleSubmit = useCallback(
+        (e) => {
+            e.preventDefault();
+            console.log('작동');
+            axios
+                .post('http://localhost:8080/items', {
+                    itemBrand,
+                    itemName,
+                    modelNo,
+                    itemColor,
+                    releaseDate,
+                    soldOut,
+                })
+                .then((res) => {
+                    console.log(res);
+                    window.location = '/items/list';
+                })
+                .catch((err) => console.log(err));
+        },
+        [itemBrand, itemName, modelNo, itemColor, releaseDate, soldOut]
+    );
 
     return (
         <form onSubmit={handleSubmit} method="post">
@@ -46,7 +52,7 @@ const Create = () => {
             <input type="text" onChange={handleChange} name="itemName" value={itemName} placeholder="이름" required />
             <input type="text" onChange={handleChange} name="itemColor" value={itemColor} placeholder="색상" required />
             <input type="text" onChange={handleChange} name="releaseDate" value={releaseDate} placeholder="출시날짜" required />
-            <input type="radio" onChange={handleChange} name="soldOut" value={soldOut} placeholder="상태" required />
+            판매 : <input type="checkbox" onChange={handleChange} name="soldOut" value={soldOut} placeholder="상태" required />
             <button type="submit">등록하기</button>
         </form>
     );

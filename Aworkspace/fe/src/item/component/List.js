@@ -1,25 +1,30 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import "../css/List.css";
+import React, { useState, useEffect, useCallback } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import '../css/List.css';
 
 const List = () => {
     const [list, setList] = useState([]);
     const fetchList = () => {
         axios
-            .get("http://localhost:8080/items/list")
+            .get('http://localhost:8080/items/list')
             .then((res) => {
                 console.log(res);
                 setList(res.data);
             })
             .catch((err) => {
                 console.log(err);
-                console.log(err.data);
             });
     };
+
     useEffect(() => {
+        console.log('rendering');
         fetchList();
     }, []);
+
+    const handleClick = useCallback(() => {
+        list.map((item) => [localStorage.setItem('select', `${item.itemNo}`)]);
+    }, [list]);
 
     return list.map((item) => {
         return (
@@ -47,13 +52,7 @@ const List = () => {
                         <td>{item.soldOut}</td>
                         <td>
                             <Link to={`/items/item-number/${item.itemNo}`} className="linkto-item">
-                                <button
-                                    onClick={() => {
-                                        localStorage.setItem("select", `${item.itemNo}`);
-                                    }}
-                                >
-                                    자세히보기
-                                </button>
+                                <button onClick={handleClick}>자세히보기</button>
                             </Link>
                         </td>
                     </tr>

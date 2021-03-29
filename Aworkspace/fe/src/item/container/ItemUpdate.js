@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useCallback } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const ItemUpdate = () => {
     const [detail, setDetail] = useState({});
     const { itemBrand, itemName, modelNo, itemColor, releaseDate } = detail;
     const fetchOne = () => {
         axios
-            .get(`http://localhost:8080/items/item-number/${localStorage.getItem("select")}`)
+            .get(`http://localhost:8080/items/item-number/${localStorage.getItem('select')}`)
             .then((res) => {
                 console.log(res);
                 setDetail({
@@ -25,31 +25,37 @@ const ItemUpdate = () => {
         fetchOne();
     }, []);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("update");
-        axios
-            .post("http://localhost:8080/items", {
-                itemBrand,
-                itemName,
-                modelNo,
-                itemColor,
-                releaseDate,
-            })
-            .then((res) => {
-                console.log(res);
-                window.location = "/items/list";
-            })
-            .catch((err) => console.log(err));
-    };
+    const handleSubmit = useCallback(
+        (e) => {
+            e.preventDefault();
+            console.log('update');
+            axios
+                .post('http://localhost:8080/items', {
+                    itemBrand,
+                    itemName,
+                    modelNo,
+                    itemColor,
+                    releaseDate,
+                })
+                .then((res) => {
+                    console.log(res);
+                    window.location = '/items/list';
+                })
+                .catch((err) => console.log(err));
+        },
+        [itemBrand, itemColor, itemName, modelNo, releaseDate]
+    );
 
-    const handleChange = (e) => {
-        const { value, name } = e.target;
-        setDetail({
-            ...detail,
-            [name]: value,
-        });
-    };
+    const handleChange = useCallback(
+        (e) => {
+            const { value, name } = e.target;
+            setDetail({
+                ...detail,
+                [name]: value,
+            });
+        },
+        [detail]
+    );
 
     return (
         <>

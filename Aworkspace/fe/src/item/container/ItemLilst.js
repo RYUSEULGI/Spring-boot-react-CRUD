@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import React from "react";
-import List from "../component/List";
+import { Link } from 'react-router-dom';
+import React from 'react';
+import List from '../component/List';
 
 const ItemLilst = () => (
     <>

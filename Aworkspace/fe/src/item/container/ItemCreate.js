@@ -1,5 +1,5 @@
-import React from "react";
-import Create from "../component/Create";
+import React from 'react';
+import Create from '../component/Create';
 
 const ItemCreate = () => (
     <>
