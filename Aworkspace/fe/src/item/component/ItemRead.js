@@ -20,14 +20,16 @@ const ItemRead = (props) => {
     }, []);
 
     const handleDelete = useCallback(() => {
-        console.log(`삭제:${detail.itemNo}`);
-        axios
-            .delete(`http://localhost:8080/items/item-number/delete/${localStorage.getItem('select')}`)
-            .then((res) => {
-                console.log(res);
-                window.location = '/items/list';
-            })
-            .catch((err) => console.log(err));
+        if (window.confirm('정말 삭제하곘습니까?')) {
+            console.log(`삭제:${detail.itemNo}`);
+            axios
+                .delete(`http://localhost:8080/items/item-number/delete/${localStorage.getItem('select')}`)
+                .then((res) => {
+                    console.log(res);
+                    window.location = '/items/list';
+                })
+                .catch((err) => console.log(err));
+        }
     }, [detail.itemNo]);
 
     return (
