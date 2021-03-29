@@ -1,13 +1,13 @@
-import React from "react";
-import { Route } from "react-router-dom";
-import Home from "./cmm/container/Home";
-import Counter from "./cmm/container/Counter";
-import Login from "./sec/container/Login";
-import Signup from "./uss/container/Signup";
-import ItemList from "./item/container/ItemLilst";
-import ItemCreate from "./item/container/ItemCreate";
-import ItemRead from "./item/container/ItemRead";
-import ItemUpdate from "./item/container/ItemUpdate";
+import React from 'react';
+import { Route } from 'react-router-dom';
+import Home from './cmm/container/Home';
+import Counter from './cmm/container/Counter';
+import Login from './sec/container/Login';
+import Signup from './uss/container/Signup';
+import ItemList from './item/component/ItemLilst';
+import ItemCreate from './item/component/ItemCreate';
+import ItemRead from './item/component/ItemRead';
+import ItemUpdate from './item/component/ItemUpdate';
 
 const App = () => {
     return (
