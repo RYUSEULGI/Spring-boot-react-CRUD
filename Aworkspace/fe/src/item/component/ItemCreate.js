@@ -1,10 +1,10 @@
 import React from 'react';
-import Create from '../component/Create';
+import CreateForm from './CreateForm';
 
 const ItemCreate = () => (
     <>
         <h1>Create</h1>
-        <Create />
+        <CreateForm />
     </>
 );
 
