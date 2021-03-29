@@ -56,7 +56,7 @@ const ItemRead = (props) => {
                     </tr>
                 </tbody>
             </table>
-            <Link to={`/items/item-number/${detail.itemNo}/update`}>
+            <Link to={`/items/item-number/update/${detail.itemNo}`}>
                 <button>수정하기</button>
             </Link>
             <button method="Post" onClick={handleDelete}>

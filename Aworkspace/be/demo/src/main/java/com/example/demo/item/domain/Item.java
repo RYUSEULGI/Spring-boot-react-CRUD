@@ -2,7 +2,10 @@ package com.example.demo.item.domain;
 
 import javax.persistence.*;
 
+import lombok.Data;
+
 @Entity
+@Data
 @Table(name = "items")
 public class Item {
 
@@ -28,4 +31,5 @@ public class Item {
 	
 	@Column(name = "sold_out")
 	public Boolean soldOut;
+
 }

@@ -30,7 +30,7 @@ const ItemUpdate = () => {
             e.preventDefault();
             console.log('update');
             axios
-                .post('http://localhost:8080/items', {
+                .put(`http://localhost:8080/items/item-number/update/${localStorage.getItem('select')}`, {
                     itemBrand,
                     itemName,
                     modelNo,

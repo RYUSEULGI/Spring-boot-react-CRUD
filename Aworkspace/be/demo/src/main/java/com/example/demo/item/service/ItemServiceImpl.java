@@ -21,7 +21,6 @@ public class ItemServiceImpl extends AbstractService<Item> implements ItemServic
 		return itemRepo.count();
 	}
 
-	
 	@Override
 	public void deleteById(long id) {
 		itemRepo.deleteById(id);
@@ -68,4 +67,18 @@ public class ItemServiceImpl extends AbstractService<Item> implements ItemServic
 		itemRepo.delete(entity);
 	}
 
+	@Override
+	public long update(long id, Item item) {
+		Item i = itemRepo.findById(id).orElseThrow();
+		
+		i.setItemBrand(item.getItemBrand());
+		i.setItemColor(item.getItemColor());
+		i.setItemName(item.getItemName());
+		i.setModelNo(item.getModelNo());
+		i.setReleaseDate(item.getReleaseDate());
+		i.setSoldOut(item.getSoldOut());
+		
+		Item updateItem = itemRepo.save(i);
+		return updateItem.getItemNo();
+	}
 }
