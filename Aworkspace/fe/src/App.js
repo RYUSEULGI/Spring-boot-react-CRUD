@@ -7,6 +7,7 @@ import Signup from "./uss/container/Signup";
 import ItemList from "./item/container/ItemLilst";
 import ItemCreate from "./item/container/ItemCreate";
 import ItemRead from "./item/container/ItemRead";
+import ItemUpdate from "./item/container/ItemUpdate";
 
 const App = () => {
     return (
@@ -17,6 +18,7 @@ const App = () => {
             <Route path="/Signup" component={Signup} />
             <Route path="/items/list" component={ItemList} />
             <Route path="/items/item-number/:id" component={ItemRead} />
+            <Route path="/items/item-number/:id/update" component={ItemUpdate} />
             <Route path="/items/create" component={ItemCreate} />
         </>
     );

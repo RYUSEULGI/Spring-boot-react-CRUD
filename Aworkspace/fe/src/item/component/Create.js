@@ -41,12 +41,12 @@ const Create = () => {
 
     return (
         <form onSubmit={handleSubmit} method="post">
-            <input type="text" onChange={handleChange} name="itemBrand" value={itemBrand} placeholder="브랜드" />
-            <input type="text" onChange={handleChange} name="modelNo" value={modelNo} placeholder="모델번호" />
-            <input type="text" onChange={handleChange} name="itemName" value={itemName} placeholder="이름" />
-            <input type="text" onChange={handleChange} name="itemColor" value={itemColor} placeholder="색상" />
-            <input type="text" onChange={handleChange} name="releaseDate" value={releaseDate} placeholder="출시날짜" />
-            <input type="radio" onChange={handleChange} name="soldOut" value={soldOut} placeholder="상태" />
+            <input type="text" onChange={handleChange} name="itemBrand" value={itemBrand} placeholder="브랜드" required />
+            <input type="text" onChange={handleChange} name="modelNo" value={modelNo} placeholder="모델번호" required />
+            <input type="text" onChange={handleChange} name="itemName" value={itemName} placeholder="이름" required />
+            <input type="text" onChange={handleChange} name="itemColor" value={itemColor} placeholder="색상" required />
+            <input type="text" onChange={handleChange} name="releaseDate" value={releaseDate} placeholder="출시날짜" required />
+            <input type="radio" onChange={handleChange} name="soldOut" value={soldOut} placeholder="상태" required />
             <button type="submit">등록하기</button>
         </form>
     );

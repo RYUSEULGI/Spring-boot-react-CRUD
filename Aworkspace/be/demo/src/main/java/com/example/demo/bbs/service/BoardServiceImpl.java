@@ -50,4 +50,10 @@ public class BoardServiceImpl extends AbstractService<Board>{
 		return null;
 	}
 
+	@Override
+	public void delete(Board entity) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

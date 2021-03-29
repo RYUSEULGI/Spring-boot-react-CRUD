@@ -4,6 +4,7 @@ import axios from "axios";
 
 const ItemRead = (props) => {
     const [detail, setDetail] = useState({});
+
     const fetchOne = () => {
         axios
             .get(`http://localhost:8080/items/item-number/${localStorage.getItem("select")}`)
@@ -18,12 +19,22 @@ const ItemRead = (props) => {
         fetchOne();
     }, []);
 
+    const handleDelete = () => {
+        console.log(`삭제:${detail.itemNo}`);
+        axios
+            .delete(`http://localhost:8080/items/item-number/delete/${localStorage.getItem("select")}`)
+            .then((res) => {
+                console.log(res);
+                window.location = "/items/list";
+            })
+            .catch((err) => console.log(err));
+    };
+
     return (
         <div>
             <table>
                 <thead>
                     <tr>
-                        <th>No</th>
                         <th>브랜드</th>
                         <th>모델번호</th>
                         <th>이름</th>
@@ -34,7 +45,6 @@ const ItemRead = (props) => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{detail.id}</td>
                         <td>{detail.itemBrand}</td>
                         <td>{detail.modelNo}</td>
                         <td>{detail.itemName}</td>
@@ -44,9 +54,12 @@ const ItemRead = (props) => {
                     </tr>
                 </tbody>
             </table>
-            <Link to="/items/list">
+            <Link to={`/items/item-number/${detail.itemNo}/update`}>
                 <button>수정하기</button>
             </Link>
+            <button method="Post" onClick={handleDelete}>
+                삭제하기
+            </button>
             <Link to="/items/list">
                 <button>목록으로</button>
             </Link>

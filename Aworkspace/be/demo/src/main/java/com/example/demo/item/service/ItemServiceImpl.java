@@ -21,6 +21,7 @@ public class ItemServiceImpl extends AbstractService<Item> implements ItemServic
 		return itemRepo.count();
 	}
 
+	
 	@Override
 	public void deleteById(long id) {
 		itemRepo.deleteById(id);
@@ -29,11 +30,6 @@ public class ItemServiceImpl extends AbstractService<Item> implements ItemServic
 	@Override
 	public List<Item> findAll() {
 		return itemRepo.findAll();
-	}
-
-	@Override
-	public Item save(Item entity) {
-		return itemRepo.save(entity);
 	}
 
 	@Override
@@ -60,4 +56,16 @@ public class ItemServiceImpl extends AbstractService<Item> implements ItemServic
 	public Optional<Item> findById(long id) {
 		return itemRepo.findById(id);
 	}
+
+	@Override
+	public Item save(Item entity) {
+		return itemRepo.save(entity);
+	}
+
+
+	@Override
+	public void delete(Item entity) {
+		itemRepo.delete(entity);
+	}
+
 }

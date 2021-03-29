@@ -21,10 +21,6 @@ const List = () => {
         fetchList();
     }, []);
 
-    const handleOnClick = (e) => {
-        e.preventDefault();
-    };
-
     return list.map((item) => {
         return (
             <table>
@@ -53,7 +49,6 @@ const List = () => {
                             <Link to={`/items/item-number/${item.itemNo}`} className="linkto-item">
                                 <button
                                     onClick={() => {
-                                        console.log(`${item.itemNo}`);
                                         localStorage.setItem("select", `${item.itemNo}`);
                                     }}
                                 >
