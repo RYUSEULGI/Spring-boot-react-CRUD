@@ -1,27 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import axios from 'axios';
+import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/List.css';
 
-const List = () => {
-    const [list, setList] = useState([]);
-    const fetchList = () => {
-        axios
-            .get('http://localhost:8080/items/list')
-            .then((res) => {
-                console.log(res);
-                setList(res.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    };
-
-    useEffect(() => {
-        console.log('rendering');
-        fetchList();
-    }, []);
-
+const List = ({ list }) => {
     const handleClick = useCallback(() => {
         list.map((item) => [localStorage.setItem('select', `${item.itemNo}`)]);
     }, [list]);
