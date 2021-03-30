@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 const ItemUpdate = () => {
     const [detail, setDetail] = useState({});
-    const { itemBrand, itemName, modelNo, itemColor, releaseDate } = detail;
     const fetchOne = () => {
         axios
             .get(`http://localhost:8080/items/item-number/${localStorage.getItem('select')}`)
@@ -30,20 +29,14 @@ const ItemUpdate = () => {
             e.preventDefault();
             console.log('update');
             axios
-                .put(`http://localhost:8080/items/item-number/update/${localStorage.getItem('select')}`, {
-                    itemBrand,
-                    itemName,
-                    modelNo,
-                    itemColor,
-                    releaseDate,
-                })
+                .put(`http://localhost:8080/items/item-number/update/${localStorage.getItem('select')}`, { ...detail })
                 .then((res) => {
                     console.log(res);
                     window.location = '/items/list';
                 })
                 .catch((err) => console.log(err));
         },
-        [itemBrand, itemColor, itemName, modelNo, releaseDate]
+        [detail]
     );
 
     const handleChange = useCallback(

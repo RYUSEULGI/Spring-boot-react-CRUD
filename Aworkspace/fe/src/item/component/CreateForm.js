@@ -29,12 +29,7 @@ const Create = () => {
             console.log('작동');
             axios
                 .post('http://localhost:8080/items', {
-                    itemBrand,
-                    itemName,
-                    modelNo,
-                    itemColor,
-                    releaseDate,
-                    soldOut,
+                    ...inputs,
                 })
                 .then((res) => {
                     console.log(res);
@@ -42,7 +37,7 @@ const Create = () => {
                 })
                 .catch((err) => console.log(err));
         },
-        [itemBrand, itemName, modelNo, itemColor, releaseDate, soldOut]
+        [inputs]
     );
 
     return (
