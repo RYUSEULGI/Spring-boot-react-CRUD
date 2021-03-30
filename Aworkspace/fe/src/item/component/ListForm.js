@@ -1,12 +1,8 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import '../css/List.css';
 
 const List = ({ list }) => {
-    const handleClick = useCallback(() => {
-        list.map((item) => [localStorage.setItem('select', `${item.itemNo}`)]);
-    }, [list]);
-
     return list.map((item) => {
         return (
             <table>
@@ -33,7 +29,13 @@ const List = ({ list }) => {
                         <td>{item.soldOut}</td>
                         <td>
                             <Link to={`/items/item-number/${item.itemNo}`} className="linkto-item">
-                                <button onClick={handleClick}>자세히보기</button>
+                                <button
+                                    onClick={() => {
+                                        localStorage.setItem('select', `${item.itemNo}`);
+                                    }}
+                                >
+                                    자세히보기
+                                </button>
                             </Link>
                         </td>
                     </tr>
