@@ -9,13 +9,7 @@ const ItemUpdate = () => {
             .get(`http://localhost:8080/items/item-number/${localStorage.getItem('select')}`)
             .then((res) => {
                 console.log(res);
-                setDetail({
-                    itemBrand: res.data.itemBrand,
-                    modelNo: res.data.modelNo,
-                    itemName: res.data.itemName,
-                    itemColor: res.data.itemColor,
-                    releaseDate: res.data.releaseDate,
-                });
+                setDetail(res.data);
             })
             .catch((err) => console.log(err));
     };
