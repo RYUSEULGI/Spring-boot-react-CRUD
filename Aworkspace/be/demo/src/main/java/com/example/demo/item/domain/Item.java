@@ -17,25 +17,25 @@ public class Item {
 	@Id
 	@Column(name = "item_id")
 	@GeneratedValue
-	public long itemNo;
+	private long itemNo;
 
 	@Column(name = "item_brand")
-	public String itemBrand;
+	private String itemBrand;
 
 	@Column(name = "model_no")
-	public String modelNo;
+	private String modelNo;
 
 	@Column(name = "item_name")
-	public String itemName;
+	private String itemName;
 
 	@Column(name = "item_color")
-	public String itemColor;
+	private String itemColor;
 
 	@Column(name = "release_date")
-	public String releaseDate;
+	private String releaseDate;
 	
 	@Column(name = "sold_out")
-	public Boolean soldOut;
+	private Boolean soldOut;
 	
 	@OneToMany(mappedBy = "item")
 	private List<OrderItem> orderItem = new ArrayList<>();

@@ -14,11 +14,11 @@ public class OrderItem {
 	@Column(name="order_item_id")
 	private long id;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="item_id")  // FK
 	private Item item;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="user_id") // FK
 	private User user;
 	

@@ -9,12 +9,11 @@ import lombok.Data;
 @Data
 public class ItemDto implements Serializable {
 	private static final long serialVersionUID = 1L;
-	public long itemNo;
-	public String itemBrand;
-	public String modelNo;
-	public String itemName;
-	public String itemColor;
-	public String releaseDate;
-	public Boolean soldOut;
-	
+	private long itemNo;
+	private String itemBrand;
+	private String modelNo;
+	private String itemName;
+	private String itemColor;
+	private String releaseDate;
+	private Boolean soldOut;
 }

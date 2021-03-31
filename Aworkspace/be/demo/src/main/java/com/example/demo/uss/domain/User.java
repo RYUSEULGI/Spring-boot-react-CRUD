@@ -14,22 +14,22 @@ public class User{
     @Id
     @Column(name = "user_id")
     @GeneratedValue
-    public long userNo;
+    private long userNo;
 
     @Column(name = "username")
-    public String username;
+    private String username;
 
     @Column(name = "password")
-    public String password;
+    private String password;
     
     @Column(name = "name")
-    public String name;
+    private String name;
     
     @Column(name = "email")
-    public String email;
+    private String email;
     
     @Column(name = "reg_date")
-    public String regDate;
+    private String regDate;
     
     @OneToMany(mappedBy="user")
     private List<OrderItem> orderItem = new ArrayList<>();
