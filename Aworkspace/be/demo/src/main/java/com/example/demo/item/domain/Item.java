@@ -1,6 +1,11 @@
 package com.example.demo.item.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
+
+import com.example.demo.order.domain.OrderItem;
 
 import lombok.Data;
 
@@ -10,7 +15,7 @@ import lombok.Data;
 public class Item {
 
 	@Id
-	@Column(name = "item_no")
+	@Column(name = "item_id")
 	@GeneratedValue
 	public long itemNo;
 
@@ -31,5 +36,8 @@ public class Item {
 	
 	@Column(name = "sold_out")
 	public Boolean soldOut;
-
+	
+	@OneToMany(mappedBy = "item")
+	private List<OrderItem> orderItem = new ArrayList<>();
+	
 }
