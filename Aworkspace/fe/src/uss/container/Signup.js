@@ -1,62 +1,74 @@
-import React from "react";
-import axios from "axios";
-import "./css/Signup.css";
+import React, { useState } from 'react';
+import axios from 'axios';
+import '../css/Signup.css';
 
 const Signup = () => {
-	const url = "#";
-	const insertMany = (e) => {
-		e.preventDefault();
-		alert("dummy data");
-		axios
-			.get("http://localhost:8080/auth/insertMany")
-			.then((res) => console.log(`${res.data.message} 등록됨`))
-			.catch((err) => console.log(err));
-	};
+    const [userInfo, setUserInfo] = useState({
+        username: '',
+        password: '',
+        name: '',
+        email: '',
+    });
 
-	return (
-		<form style={{ border: "1px solid #ccc" }}>
-			<div className="container">
-				<h1>Sign Up</h1>
-				<p>Please fill in this form to create an account.</p>
-				<button onClick={insertMany}>input dummy data</button>
-				<hr />
+    const { username, password, name, email } = userInfo;
 
-				<label htmlFor="email">
-					<b>Email</b>
-				</label>
-				<input type="text" placeholder="Enter Email" name="email" />
+    const handleChange = (e) => {
+        const { value, name } = e.target;
+        setUserInfo({
+            ...userInfo,
+            [name]: value,
+        });
+    };
 
-				<label htmlFor="psw">
-					<b>Password</b>
-				</label>
-				<input type="password" placeholder="Enter Password" name="psw" />
+    const handleSubmit = (e) => {
+        console.log('전송');
+        e.preventDefault();
+        axios
+            .post('http://localhost:8080/users', {
+                ...userInfo,
+            })
+            .then((res) => {
+                console.log(res);
+                alert('회원가압이 완료되었습니다.');
+                window.location = '/login';
+            })
+            .catch((err) => {
+                console.log(err);
+                alert('회원가압에 실패했습니다. 다시 시도해주세요.');
+            });
+    };
 
-				<label htmlFor="psw-repeat">
-					<b>Repeat Password</b>
-				</label>
-				<input type="password" placeholder="Repeat Password" name="psw-repeat" />
+    return (
+        <form onSubmit={handleSubmit} method="post" style={{ border: '1px solid #ccc' }}>
+            <div className="container">
+                <h1>회원가입</h1>
+                <hr />
 
-				{/* <label>
-                    <input type="checkbox" checked="checked" name="remember" style={{marginBottom: "15px"}}/> Remember me
-                </label> */}
-				<p>
-					By creating an account you agree to our{" "}
-					<a href={url} style={{ color: "dodgerblue" }}>
-						Terms & Privacy
-					</a>
-					.
-				</p>
+                <label htmlFor="username">
+                    <b>ID</b>
+                </label>
+                <input type="text" placeholder="id를 입력하세요" name="username" value={username} onChange={handleChange} required />
 
-				<div className="clearfix">
-					<button type="button" className="cancelbtn">
-						Cancel
-					</button>
-					<button type="submit" className="signupbtn">
-						Sign Up
-					</button>
-				</div>
-			</div>
-		</form>
-	);
+                <label htmlFor="password">
+                    <b>Password</b>
+                </label>
+                <input type="password" placeholder="비밀번호를 입력하세요" name="password" value={password} onChange={handleChange} required />
+
+                <label htmlFor="name">
+                    <b>이름</b>
+                </label>
+                <input type="text" placeholder="사용자 이름을 입력하세요" name="name" value={name} onChange={handleChange} required />
+
+                <label htmlFor="email">
+                    <b>Email</b>
+                </label>
+                <input type="text" placeholder="이메일주소를 입력하세요" name="email" value={email} onChange={handleChange} required />
+
+                <button type="submit" className="signupbtn">
+                    Sign Up
+                </button>
+            </div>
+        </form>
+    );
 };
 export default Signup;

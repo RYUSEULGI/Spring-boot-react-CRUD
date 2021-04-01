@@ -17,21 +17,6 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 	private final UserRepository userRepo;
 	
 	@Override
-	public long count() {
-		return userRepo.count();
-	}
-
-	@Override
-	public void deleteById(long id) {
-		userRepo.deleteById(id);
-	}
-
-	@Override
-	public Optional<User> findById(long id) {
-		return userRepo.findById(id);
-	}
-
-	@Override
 	public List<User> findAll() {
 		return userRepo.findAll();
 	}
@@ -39,6 +24,31 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 	@Override
 	public User save(User entity) {
 		return userRepo.save(entity);
+	}
+	
+	@Override
+	public Optional<User> findById(long id) {
+		return userRepo.findById(id);
+	}
+	
+	@Override
+	public void login(User user) {
+		userRepo.login(user.getUserNo(), user.getUsername(),user.getPassword());
+	}
+	
+	@Override
+	public User findOne(long id) {
+		return null;
+	}
+	
+	@Override
+	public long count() {
+		return userRepo.count();
+	}
+
+	@Override
+	public void deleteById(long id) {
+		userRepo.deleteById(id);
 	}
 
 	@Override
@@ -55,4 +65,5 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 	public void delete(User entity) {
 		userRepo.delete(entity);
 	}
+
 }

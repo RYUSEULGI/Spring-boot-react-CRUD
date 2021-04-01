@@ -1,39 +1,70 @@
-import React from "react";
-import avatar from "./logo192.png";
-import "./css/Login.css";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import '../css/Login.css';
 
 const Login = () => {
-    const url = "#";
+    const [login, setLogin] = useState({});
+    const { username, password } = login;
+
+    const fetchUser = () => {
+        axios
+            .get('http://localhost:8080/users/list')
+            .then((res) => {
+                console.log(res.data);
+                setLogin(res.data);
+            })
+            .catch((err) => console.log(err));
+    };
+
+    useEffect(() => {
+        fetchUser();
+    }, []);
+
+    const handleChange = (e) => {
+        const { value, name } = e.target;
+        setLogin({
+            ...login,
+            [name]: value,
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios
+            .post('http://localhost:8080/users/login', { ...login })
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => console.log(err));
+    };
+
     return (
-        <form method="post">
-            <div className="imgcontainer">
-                <img src={avatar} alt="Avatar" className="avatar" />
-            </div>
-
+        <form onSubmit={handleSubmit} method="post">
             <div className="container">
-                <label for="uname">
-                    <b>Username</b>
+                <label htmlFor="uname">
+                    <b>아이디</b>
                 </label>
-                <input type="text" placeholder="Enter Username" name="uname" required />
+                <input
+                    type="text"
+                    placeholder="Enter Username"
+                    value={username}
+                    name="username"
+                    onChange={handleChange}
+                    required
+                />
 
-                <label for="psw">
-                    <b>Password</b>
+                <label htmlFor="psw">
+                    <b>비밀번호</b>
                 </label>
-                <input type="password" placeholder="Enter Password" name="psw" required />
-
+                <input
+                    type="password"
+                    placeholder="Enter Password"
+                    value={password}
+                    name="password"
+                    onChange={handleChange}
+                    required
+                />
                 <button type="submit">Login</button>
-                <label>
-                    <input type="checkbox" checked="checked" name="remember" /> Remember me
-                </label>
-            </div>
-
-            <div className="container" style={{ backgroundColor: "#f1f1f1" }}>
-                <button type="button" className="cancelbtn">
-                    Cancel
-                </button>
-                <span className="psw">
-                    Forgot <a href={url}>password?</a>
-                </span>
             </div>
         </form>
     );
