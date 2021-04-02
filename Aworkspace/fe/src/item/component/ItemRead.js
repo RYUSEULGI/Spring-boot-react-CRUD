@@ -1,13 +1,18 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const ItemRead = ({ list }) => {
+    const history = useHistory();
     const [detail, setDetail] = useState({});
 
     const fetchOne = () => {
         axios
-            .get(`http://localhost:8080/items/item-number/${localStorage.getItem('select')}`)
+            .get(
+                `http://localhost:8080/items/item-number/${localStorage.getItem(
+                    'select'
+                )}`
+            )
             .then((res) => {
                 console.log(res);
                 setDetail(res.data);
@@ -23,14 +28,18 @@ const ItemRead = ({ list }) => {
         if (window.confirm('정말 삭제하곘습니까?')) {
             console.log(`삭제:${detail.itemNo}`);
             axios
-                .delete(`http://localhost:8080/items/item-number/delete/${localStorage.getItem('select')}`)
+                .delete(
+                    `http://localhost:8080/items/item-number/delete/${localStorage.getItem(
+                        'select'
+                    )}`
+                )
                 .then((res) => {
                     console.log(res);
-                    window.location = '/items/list';
+                    history.push('/items/list');
                 })
                 .catch((err) => console.log(err));
         }
-    }, [detail.itemNo]);
+    }, [detail.itemNo, history]);
 
     return (
         <div>

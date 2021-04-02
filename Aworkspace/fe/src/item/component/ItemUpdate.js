@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const ItemUpdate = () => {
+    const history = useHistory();
     const [detail, setDetail] = useState({});
     const fetchOne = () => {
         axios
@@ -35,11 +36,11 @@ const ItemUpdate = () => {
                 )
                 .then((res) => {
                     console.log(res);
-                    window.location = '/items/list';
+                    history.push('/items/list');
                 })
                 .catch((err) => console.log(err));
         },
-        [detail]
+        [detail, history]
     );
 
     const handleChange = useCallback(

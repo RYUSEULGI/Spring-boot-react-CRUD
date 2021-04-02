@@ -1,7 +1,9 @@
 import axios from 'axios';
 import React, { useState, useCallback } from 'react';
+import { useHistory } from 'react-router';
 
 const Create = () => {
+    const history = useHistory();
     const [inputs, setInputs] = useState({
         itemBrand: '',
         itemName: '',
@@ -40,11 +42,11 @@ const Create = () => {
                 })
                 .then((res) => {
                     console.log(res);
-                    // window.location = '/items/list';
+                    history.push('/items/list');
                 })
                 .catch((err) => console.log(err));
         },
-        [inputs]
+        [history, inputs]
     );
 
     return (
