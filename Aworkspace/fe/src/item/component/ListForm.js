@@ -15,6 +15,7 @@ const List = ({ list }) => {
                         <th>색상</th>
                         <th>출시날짜</th>
                         <th>판매</th>
+                        <th>작성자</th>
                         <th>보기</th>
                     </tr>
                 </thead>
@@ -26,6 +27,7 @@ const List = ({ list }) => {
                         <td>{item.itemName}</td>
                         <td>{item.itemColor}</td>
                         <td>{item.releaseDate}</td>
+                        <td>{item.user}</td>
                         <td>{item.soldOut}</td>
                         <td>
                             <Link to={`/items/item-number/${item.itemNo}`} className="linkto-item">

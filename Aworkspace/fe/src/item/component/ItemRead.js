@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const ItemRead = (props) => {
+const ItemRead = ({ list }) => {
     const [detail, setDetail] = useState({});
 
     const fetchOne = () => {
@@ -37,6 +37,7 @@ const ItemRead = (props) => {
             <table>
                 <thead>
                     <tr>
+                        <th>No</th>
                         <th>브랜드</th>
                         <th>모델번호</th>
                         <th>이름</th>
@@ -47,6 +48,7 @@ const ItemRead = (props) => {
                 </thead>
                 <tbody>
                     <tr>
+                        <td>{detail.itemNo}</td>
                         <td>{detail.itemBrand}</td>
                         <td>{detail.modelNo}</td>
                         <td>{detail.itemName}</td>

@@ -6,7 +6,11 @@ const ItemUpdate = () => {
     const [detail, setDetail] = useState({});
     const fetchOne = () => {
         axios
-            .get(`http://localhost:8080/items/item-number/${localStorage.getItem('select')}`)
+            .get(
+                `http://localhost:8080/items/item-number/${localStorage.getItem(
+                    'select'
+                )}`
+            )
             .then((res) => {
                 console.log(res);
                 setDetail(res.data);
@@ -23,7 +27,12 @@ const ItemUpdate = () => {
             e.preventDefault();
             console.log('update');
             axios
-                .put(`http://localhost:8080/items/item-number/update/${localStorage.getItem('select')}`, { ...detail })
+                .put(
+                    `http://localhost:8080/items/item-number/update/${localStorage.getItem(
+                        'select'
+                    )}`,
+                    { ...detail }
+                )
                 .then((res) => {
                     console.log(res);
                     window.location = '/items/list';
@@ -48,11 +57,36 @@ const ItemUpdate = () => {
         <>
             <h1>수정페이지</h1>
             <form onSubmit={handleSubmit} method="post">
-                <input type="text" name="itemBrand" value={detail.itemBrand} onChange={handleChange} />
-                <input type="text" name="modelNo" value={detail.modelNo} onChange={handleChange} />
-                <input type="text" name="itemName" value={detail.itemName} onChange={handleChange} />
-                <input type="text" name="itemColor" value={detail.itemColor} onChange={handleChange} />
-                <input type="text" name="releaseDate" value={detail.releaseDate} onChange={handleChange} />
+                <input
+                    type="text"
+                    name="itemBrand"
+                    value={detail.itemBrand}
+                    onChange={handleChange}
+                />
+                <input
+                    type="text"
+                    name="modelNo"
+                    value={detail.modelNo}
+                    onChange={handleChange}
+                />
+                <input
+                    type="text"
+                    name="itemName"
+                    value={detail.itemName}
+                    onChange={handleChange}
+                />
+                <input
+                    type="text"
+                    name="itemColor"
+                    value={detail.itemColor}
+                    onChange={handleChange}
+                />
+                <input
+                    type="text"
+                    name="releaseDate"
+                    value={detail.releaseDate}
+                    onChange={handleChange}
+                />
                 <button type="submit">수정하기</button>
             </form>
             <Link to="/items/list">

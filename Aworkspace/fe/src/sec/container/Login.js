@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import '../css/Login.css';
 
 const Login = () => {
+    const history = useHistory();
     const [login, setLogin] = useState({});
     const { username, password } = login;
 
@@ -31,12 +33,19 @@ const Login = () => {
     const handleClick = (e) => {
         e.preventDefault();
         axios
-            .post('http://localhost:8080/users/login', { ...login })
+            .post('http://localhost:8080/users/login', {
+                username,
+                password,
+            })
             .then((res) => {
                 console.log(res);
-                // localStorage.setItem("token", res.);
+                localStorage.setItem('token', JSON.stringify(res));
+                history.push('/');
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                console.log(err);
+                alert('아이디와 비밀번호를 다시 입력해주세요');
+            });
     };
 
     // const activeBtn = password.length >= 8;

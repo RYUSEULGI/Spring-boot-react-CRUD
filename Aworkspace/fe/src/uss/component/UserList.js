@@ -1,36 +1,32 @@
-import React from 'react'
-import './css/UserList.css'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import ListForm from './ListForm';
+import '../css/UserList.css';
 
-const UserList = () => (
-    <>
-        <div class="container">
-            <table class="responsive-table">
-                <caption>회원리스트</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">회원명</th>
-                        <th scope="col">이메일</th>
-                        <th scope="col">전화번호</th>
-                        <th scope="col">주소</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">Frozen</th>
-                    <td data-title="Released">2013</td>
-                    <td data-title="Studio">Disney</td>
-                    <td data-title="Worldwide Gross" data-type="currency">$1,276,480,335</td>
-                </tr>
-                <tr>
-                    <th scope="row">Incredibles 2</th>
-                    <td data-title="Released">2018</td>
-                    <td data-title="Studio">Disney Pixar</td>
-                    <td data-title="Worldwide Gross" data-type="currency">$1,210,072,582</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </>
-)
+const UserList = () => {
+    const [list, setList] = useState([]);
 
-export default UserList
+    const fetchList = () => {
+        axios
+            .get('http://localhost:8080/users/list')
+            .then((res) => {
+                console.log(res);
+                setList(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    useEffect(() => {
+        fetchList();
+    }, []);
+
+    return (
+        <>
+            <ListForm list={list} />
+        </>
+    );
+};
+
+export default UserList;
