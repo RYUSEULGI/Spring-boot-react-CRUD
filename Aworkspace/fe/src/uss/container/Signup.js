@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../css/Signup.css';
+import { useHistory } from 'react-router';
 
 const Signup = () => {
+    const history = useHistory();
     const [userInfo, setUserInfo] = useState({
         username: '',
         password: '',
@@ -30,7 +32,7 @@ const Signup = () => {
             .then((res) => {
                 console.log(res);
                 alert('회원가압이 완료되었습니다.');
-                //window.location = '/login';
+                history.push('login');
             })
             .catch((err) => {
                 console.log(err);
