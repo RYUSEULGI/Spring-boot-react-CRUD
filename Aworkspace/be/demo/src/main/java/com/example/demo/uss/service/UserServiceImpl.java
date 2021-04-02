@@ -32,11 +32,6 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 	}
 	
 	@Override
-	public void login(User user) {
-		userRepo.login(user.getUserNo(), user.getUsername(),user.getPassword());
-	}
-	
-	@Override
 	public User findOne(long id) {
 		return null;
 	}
@@ -66,4 +61,8 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 		userRepo.delete(entity);
 	}
 
+	@Override
+	public User login(String username, String password) {
+		return userRepo.login(username, password);
+	}
 }

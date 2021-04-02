@@ -16,6 +16,7 @@ import com.example.demo.uss.service.UserServiceImpl;
 
 import lombok.RequiredArgsConstructor;
 
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping(value="/users")
@@ -38,11 +39,26 @@ public class UserController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
+	@GetMapping("/login")
+	public ResponseEntity<List<User>> findAllUser(){
+		System.out.println("getUserList()");
+
+		return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
+	}
+	
 	@PostMapping("/login")
-	public ResponseEntity<?> doLogin(@RequestBody User user){
+	public ResponseEntity<User> doLogin(@RequestBody User user){
 		System.out.println("doItemCreate()");
-		userService.login(user);
 		
-		return new ResponseEntity<>(HttpStatus.OK);
+		User userLogin = userService.login(user.getUsername(), user.getPassword());
+		
+		if(userLogin != null) {
+			System.out.println("login");
+			
+			return new ResponseEntity<>(HttpStatus.OK);
+		} else {
+			System.err.println("login error");
+		}
+		return new ResponseEntity<>(HttpStatus.FAILED_DEPENDENCY);
 	}
 }

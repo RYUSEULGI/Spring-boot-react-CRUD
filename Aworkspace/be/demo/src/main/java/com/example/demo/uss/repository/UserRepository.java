@@ -1,5 +1,6 @@
 package com.example.demo.uss.repository;
 
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,7 +15,6 @@ interface UserCustomRepository{
 public interface UserRepository extends JpaRepository<User, Long>, 
 										UserCustomRepository{
 	@Transactional
-	@Query(value="select user_id userNo, username, password from users where username='username' and password='password'", nativeQuery = true)
-	public User login(@Param("userNo") long userNo, @Param("username") String username, @Param("password") String password);
-	
+	@Query(value="select * from users where users.username=:username and users.password=:password", nativeQuery = true)
+	public User login(@Param("username") String username, @Param("password") String password);
 }

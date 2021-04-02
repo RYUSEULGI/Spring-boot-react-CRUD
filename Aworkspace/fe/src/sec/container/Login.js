@@ -10,7 +10,7 @@ const Login = () => {
         axios
             .get('http://localhost:8080/users/list')
             .then((res) => {
-                console.log(res.data);
+                console.log(res);
                 setLogin(res.data);
             })
             .catch((err) => console.log(err));
@@ -28,18 +28,21 @@ const Login = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleClick = (e) => {
         e.preventDefault();
         axios
             .post('http://localhost:8080/users/login', { ...login })
             .then((res) => {
                 console.log(res);
+                // localStorage.setItem("token", res.);
             })
             .catch((err) => console.log(err));
     };
 
+    // const activeBtn = password.length >= 8;
+
     return (
-        <form onSubmit={handleSubmit} method="post">
+        <form method="post">
             <div className="container">
                 <label htmlFor="uname">
                     <b>아이디</b>
@@ -64,7 +67,7 @@ const Login = () => {
                     onChange={handleChange}
                     required
                 />
-                <button type="submit">Login</button>
+                <button onClick={handleClick}>Login</button>
             </div>
         </form>
     );
