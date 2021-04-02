@@ -47,10 +47,10 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<User> doLogin(@RequestBody User user){
+	public ResponseEntity<String> doLogin(@RequestBody User user){
 		System.out.println("doItemCreate()");
 		
-		User userLogin = userService.login(user.getUsername(), user.getPassword());
+		String userLogin = userService.login(user.getUsername(), user.getPassword());
 		
 		if(userLogin != null) {
 			System.out.println("login");

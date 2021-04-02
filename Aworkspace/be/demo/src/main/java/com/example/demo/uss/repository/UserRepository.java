@@ -15,6 +15,6 @@ interface UserCustomRepository{
 public interface UserRepository extends JpaRepository<User, Long>, 
 										UserCustomRepository{
 	@Transactional
-	@Query(value="select * from users where users.username=:username and users.password=:password", nativeQuery = true)
-	public User login(@Param("username") String username, @Param("password") String password);
+	@Query(value="select user_id, username from users where users.username=:username and users.password=:password", nativeQuery = true)
+	public String login(@Param("username") String username, @Param("password") String password);
 }
