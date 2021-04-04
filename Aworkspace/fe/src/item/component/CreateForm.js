@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useHistory } from 'react-router';
 
 const Create = () => {
@@ -48,6 +48,23 @@ const Create = () => {
         },
         [history, inputs]
     );
+
+    const handleBeforeunload = (e) => {
+        if (handleChange) {
+            e.preventDefault();
+            e.returnValue = '';
+
+            return '';
+        }
+        return undefined;
+    };
+    useEffect(() => {
+        window.addEventListener('beforeunload', handleBeforeunload);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeunload);
+        };
+    }, [handleChange]);
 
     return (
         <form onSubmit={handleSubmit} method="post">
