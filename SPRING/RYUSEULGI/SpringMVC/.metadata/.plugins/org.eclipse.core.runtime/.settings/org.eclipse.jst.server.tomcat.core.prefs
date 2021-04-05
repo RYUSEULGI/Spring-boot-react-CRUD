@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+locationorg.eclipse.jst.server.tomcat.runtime.100=/opt/homebrew/Cellar/tomcat/10.0.4/apache-tomcat-10.0.2
+locationorg.eclipse.jst.server.tomcat.runtime.90=/opt/homebrew/Cellar/tomcat@9/9.0.44/apache-tomcat-9.0.43

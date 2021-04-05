@@ -1,0 +1,5 @@
+//com.springsource.config.ui.prefs.activePageIndex\:/mvc/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml=<?xml version\="1.0" encoding\="UTF-8"?>\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/mvc/src/main/webapp/WEB-INF/views/home.jsp=<?xml version\="1.0" encoding\="UTF-8"?>\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/mvc/src/main/webapp/WEB-INF/views/sample/form.jsp=<?xml version\="1.0" encoding\="UTF-8"?>\n<activePage index\="0"/>
+//com.springsource.config.ui.prefs.activePageIndex\:/mvc/src/main/webapp/WEB-INF/views/test/form.jsp=<?xml version\="1.0" encoding\="UTF-8"?>\n<activePage index\="0"/>
+eclipse.preferences.version=1
