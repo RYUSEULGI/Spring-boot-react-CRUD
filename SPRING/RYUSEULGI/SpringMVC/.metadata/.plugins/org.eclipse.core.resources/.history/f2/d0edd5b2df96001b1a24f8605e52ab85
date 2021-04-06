@@ -1,0 +1,5 @@
+package mvc.ct.domain;
+
+public class MemberList {
+
+}
