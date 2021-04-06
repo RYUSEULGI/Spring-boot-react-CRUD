@@ -5,14 +5,10 @@ const UserDetail = () => (
     <>
         <div class="titleArea">
             <h2>mypage</h2>
+            <div class="information">***님</div>
         </div>
 
-        <div class="xans-element- xans-myshop xans-myshop-asyncbenefit">
-            <div class="ec-base-box typeMember gMessage ">
-                <div class="information">***님</div>
-            </div>
-        </div>
-        <div id="myshopMain" class="xans-element- xans-myshop xans-myshop-main">
+        <div id="myshopMain">
             <ul>
                 <li class="shopMain order">
                     <div class="box">
