@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import ListForm from './ListForm';
 import Pagination from './Pagination';
+import { fetchItemList } from '../../api/index';
 
 const ItemLilst = () => {
     const [list, setList] = useState([]);
@@ -16,9 +16,8 @@ const ItemLilst = () => {
 
     const paginate = (pageNum) => setCurrent(pageNum);
 
-    const fetchList = () => {
-        axios
-            .get('http://localhost:8080/items/list')
+    useEffect(() => {
+        fetchItemList()
             .then((res) => {
                 console.log(res);
                 setList(res.data);
@@ -26,18 +25,17 @@ const ItemLilst = () => {
             .catch((err) => {
                 console.log(err);
             });
-    };
-
-    useEffect(() => {
-        console.log('rendering');
-        fetchList();
     }, []);
 
     return (
         <>
             <h1>ItemList Page</h1>
             <ListForm list={currentIdx} />
-            <Pagination paginate={paginate} postOnePage={postOnePage} total={list.length} />
+            <Pagination
+                paginate={paginate}
+                postOnePage={postOnePage}
+                total={list.length}
+            />
             <Link to="/items/create">
                 <button>등록</button>
             </Link>

@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import '../css/List.css';
 
 const List = ({ list }) => {
+    const userInfo = () => {
+        console.log(localStorage.getItem('token'));
+    };
+
     return list.map((item) => {
         return (
             <table>
@@ -27,13 +31,19 @@ const List = ({ list }) => {
                         <td>{item.itemName}</td>
                         <td>{item.itemColor}</td>
                         <td>{item.releaseDate}</td>
-                        <td>{item.user}</td>
+                        <td>{userInfo}</td>
                         <td>{item.soldOut}</td>
                         <td>
-                            <Link to={`/items/item-number/${item.itemNo}`} className="linkto-item">
+                            <Link
+                                to={`/items/item-number/${item.itemNo}`}
+                                className="linkto-item"
+                            >
                                 <button
                                     onClick={() => {
-                                        localStorage.setItem('select', `${item.itemNo}`);
+                                        localStorage.setItem(
+                                            'select',
+                                            `${item.itemNo}`
+                                        );
                                     }}
                                 >
                                     자세히보기

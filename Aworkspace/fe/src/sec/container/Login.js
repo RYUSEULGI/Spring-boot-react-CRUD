@@ -1,26 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
+import { userLogin } from '../../api/index';
 import '../css/Login.css';
 
 const Login = () => {
     const history = useHistory();
     const [login, setLogin] = useState({});
     const { username, password } = login;
-
-    const fetchUser = () => {
-        axios
-            .get('http://localhost:8080/users/list')
-            .then((res) => {
-                console.log(res);
-                setLogin(res.data);
-            })
-            .catch((err) => console.log(err));
-    };
-
-    useEffect(() => {
-        fetchUser();
-    }, []);
 
     const handleChange = (e) => {
         const { value, name } = e.target;
@@ -32,14 +18,12 @@ const Login = () => {
 
     const handleClick = (e) => {
         e.preventDefault();
-        axios
-            .post('http://localhost:8080/users/login', {
-                username,
-                password,
-            })
+        const loginRequest = { username, password };
+
+        userLogin(loginRequest)
             .then((res) => {
                 console.log(res);
-                localStorage.setItem('token', JSON.stringify(res));
+                localStorage.setItem('token', JSON.stringify(res.config.data));
                 history.push('/');
             })
             .catch((err) => {

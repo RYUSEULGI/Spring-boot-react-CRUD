@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
+import { updateItem } from '../../api/index';
 
 const ItemUpdate = () => {
     const history = useHistory();
@@ -27,13 +28,9 @@ const ItemUpdate = () => {
         (e) => {
             e.preventDefault();
             console.log('update');
-            axios
-                .put(
-                    `http://localhost:8080/items/item-number/update/${localStorage.getItem(
-                        'select'
-                    )}`,
-                    { ...detail }
-                )
+            const updateItemRequest = { ...detail };
+
+            updateItem(updateItemRequest)
                 .then((res) => {
                     console.log(res);
                     history.push('/items/list');

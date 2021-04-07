@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import '../css/Signup.css';
+import { userSignup } from '../../api/index';
 import { useHistory } from 'react-router';
+import '../css/Signup.css';
 
 const Signup = () => {
     const history = useHistory();
@@ -25,18 +25,17 @@ const Signup = () => {
     const handleSubmit = (e) => {
         console.log('전송');
         e.preventDefault();
-        axios
-            .post('http://localhost:8080/users', {
-                ...userInfo,
-            })
+        const signupRequest = { ...userInfo };
+
+        userSignup(signupRequest)
             .then((res) => {
                 console.log(res);
-                alert('회원가압이 완료되었습니다.');
+                alert('회원가입이 완료되었습니다.');
                 history.push('login');
             })
             .catch((err) => {
                 console.log(err);
-                alert('회원가압에 실패했습니다. 다시 시도해주세요.');
+                alert('회원가입에 실패했습니다. 다시 시도해주세요.');
             });
     };
 

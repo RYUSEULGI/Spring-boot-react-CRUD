@@ -1,6 +1,6 @@
-import axios from 'axios';
 import React, { useState, useCallback, useEffect } from 'react';
 import { useHistory } from 'react-router';
+import { createItem } from '../../api/index';
 
 const Create = () => {
     const history = useHistory();
@@ -35,11 +35,9 @@ const Create = () => {
     const handleSubmit = useCallback(
         (e) => {
             e.preventDefault();
-            console.log('작동');
-            axios
-                .post('http://localhost:8080/items', {
-                    ...inputs,
-                })
+            const createItemRequest = { ...inputs };
+
+            createItem(createItemRequest)
                 .then((res) => {
                     console.log(res);
                     history.push('/items/list');

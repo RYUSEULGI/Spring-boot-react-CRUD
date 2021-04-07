@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { deleteItem } from '../../api/index';
 
 const ItemRead = ({ list }) => {
     const history = useHistory();
@@ -27,12 +28,7 @@ const ItemRead = ({ list }) => {
     const handleDelete = useCallback(() => {
         if (window.confirm('정말 삭제하곘습니까?')) {
             console.log(`삭제:${detail.itemNo}`);
-            axios
-                .delete(
-                    `http://localhost:8080/items/item-number/delete/${localStorage.getItem(
-                        'select'
-                    )}`
-                )
+            deleteItem()
                 .then((res) => {
                     console.log(res);
                     history.push('/items/list');
