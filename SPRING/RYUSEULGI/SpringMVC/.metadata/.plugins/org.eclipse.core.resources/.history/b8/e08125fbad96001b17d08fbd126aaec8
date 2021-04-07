@@ -1,7 +1,0 @@
-import java.sql.*;
-
-public class JdbcT {
-	JdbcT(){
-		class.forName
-	}
-}

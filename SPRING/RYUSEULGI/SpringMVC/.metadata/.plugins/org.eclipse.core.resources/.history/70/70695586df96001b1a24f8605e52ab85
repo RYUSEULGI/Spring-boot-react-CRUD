@@ -1,8 +1,0 @@
-package mvc.ct.controller;
-
-import org.springframework.stereotype.Controller;
-
-@Controller
-public class JsonController {
-
-}

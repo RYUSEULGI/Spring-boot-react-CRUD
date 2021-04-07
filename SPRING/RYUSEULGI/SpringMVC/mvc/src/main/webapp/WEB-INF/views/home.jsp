@@ -1,5 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page contentType="text/html;charset=utf-8"%>
 <html>
 <head>
 	<title>Home</title>
@@ -19,5 +18,10 @@
 		<a href="/controller/test/json1">JSON test</a> 
 		<a href="/controller/test/json2">JSON test</a>
 	</p>
+	
+	<h2> JspIndex (인덱스) </h2>
+    
+	<a href="base/jsp1.jsp">라이프싸이클</a><br/>
+	<a href="addr/list2.jsp">주소록</a><br/>
 </body>
 </html>

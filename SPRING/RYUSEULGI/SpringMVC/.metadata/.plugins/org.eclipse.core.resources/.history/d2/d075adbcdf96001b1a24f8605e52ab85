@@ -1,6 +1,0 @@
-package mvc.ct.domain;
-
-@Data
-public class MemberList {
-	private ArrayList<Human> list;
-}

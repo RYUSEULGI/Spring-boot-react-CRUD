@@ -8,7 +8,6 @@
 	<body style="text-align:center">
 
 		<h2>index page(한글도 되는지~?)</h2>
-		<a href=""></a>
 	
 	</body>
 </html>

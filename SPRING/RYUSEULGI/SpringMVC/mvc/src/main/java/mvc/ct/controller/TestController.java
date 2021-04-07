@@ -37,14 +37,14 @@ public class TestController {
 		log.info(dto.getName() + dto.getAge() + page);
 	}
 	
-	@GetMapping("json1")
-	public ResponseEntity<String> json1() {
-		
-		String msg = "{\"name\" : \"Tom\", \"age\" : 20}";
-		
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "application/json;charset=utf-8");
-		
-		return new ResponseEntity<String>(msg, headers, HttpStatus.OK);
-	}
+//	@GetMapping("json1")
+//	public ResponseEntity<String> json1() {
+//		
+//		String msg = "{\"name\" : \"Tom\", \"age\" : 20}";
+//		
+//		HttpHeaders headers = new HttpHeaders();
+//		headers.add("Content-Type", "application/json;charset=utf-8");
+//		
+//		return new ResponseEntity<String>(msg, headers, HttpStatus.OK);
+//	}
 }
