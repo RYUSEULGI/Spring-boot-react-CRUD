@@ -16,20 +16,17 @@ public class AddressServiceImpl implements AddressService{
 
 	@Override
 	public List<Address> listS() {
-		// TODO Auto-generated method stub
-		return null;
+		return addressDao.list();
 	}
 
 	@Override
 	public void insert(Address address) {
-		// TODO Auto-generated method stub
-		
+		addressDao.insert(address);
 	}
 
 	@Override
 	public void delete(long seq) {
-		// TODO Auto-generated method stub
-		
+		addressDao.delete(seq);
 	}
 
 }
