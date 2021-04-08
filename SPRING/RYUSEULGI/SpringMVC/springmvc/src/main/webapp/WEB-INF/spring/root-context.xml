@@ -25,6 +25,7 @@
 			 value="classpath:/mybatis-config.xml"/>
 	</bean>
 	
+	<context:component-scan base-package="springmvc.md.service" />
 	<context:component-scan base-package="springmvc.md.dao" />
 	<context:component-scan base-package="springmvc.md.mapper" />
 	<mybatis-spring:scan base-package="springmvc.md.mapper"/>
