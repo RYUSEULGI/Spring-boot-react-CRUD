@@ -13,7 +13,7 @@ import springmvc.md.domain.Address;
 import springmvc.md.service.AddressService;
 
 @Controller
-@RequestMapping("/addresses")
+@RequestMapping("controller/addresses")
 public class AddressController {
 	
 	@Autowired

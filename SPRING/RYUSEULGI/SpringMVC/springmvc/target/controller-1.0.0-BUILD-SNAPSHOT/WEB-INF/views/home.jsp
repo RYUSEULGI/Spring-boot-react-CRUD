@@ -8,7 +8,6 @@
 	click 
 </h1>
 
-<a href="boards/list.do">게시판</a>
 <a href="addresses/list.do">주소</a>
 </body>
 </html>
