@@ -10,6 +10,7 @@
 			Hello world!  
 		</h1>
 		
+		<a href="/address/list.do">주소록</a>
 		<a href="/board/list.do">게시판</a>
 		<a href="/file/uploadForm.do">파일업로드</a>
 	</body>

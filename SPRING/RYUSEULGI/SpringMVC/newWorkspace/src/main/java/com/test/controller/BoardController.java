@@ -58,11 +58,11 @@ public class BoardController {
 	}
 	
 	@GetMapping("/update.do")
-	public String getUpdate(Board board) {
+	public ModelAndView getUpdate(long id) {
 		log.info("getUpdate");
-		service.update(board);
+		Board board = service.read(id);
 		
-		return "board/update";
+		return new ModelAndView("/board/update", "board", board);
 	}
 	
 	@PostMapping("/update.do")

@@ -25,12 +25,11 @@
 		<h3> Spring Board</h3>
 		<a href='list.do'>목록</a>
 		<a href='write.do'>글쓰기</a>
-
+		<%
+			Board board = (Board)request.getAttribute("board");
+		%>
 		<form name='input' method='post' action='update.do'>
-			<input type="hidden" name="id" value="17">
-			<%
-				Board board = (Board)request.getAttribute("board");
-			%>
+			<input type="hidden" name="id" value="<%= board.getId()%>">
 			<table>	
 				<tr>
 				   <td width='20%' align='center' >WRITER</td>
@@ -57,7 +56,6 @@
 					 </td>
 				</tr>
 			</table>
-			<hr width="650" size="2" color="gray" noshade>
 		</form>
 	</body>
 </html>

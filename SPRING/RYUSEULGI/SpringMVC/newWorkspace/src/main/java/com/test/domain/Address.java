@@ -10,8 +10,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Address {
-    private long seq;
+    private int seq;
     private String name;
     private String addr;
     private Date rdate;
+    
+    private AddressFile addressFile;
 }
