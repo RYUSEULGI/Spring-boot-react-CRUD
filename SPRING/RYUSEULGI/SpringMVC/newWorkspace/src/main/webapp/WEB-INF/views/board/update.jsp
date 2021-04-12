@@ -27,7 +27,7 @@
 		<a href='write.do'>글쓰기</a>
 
 		<form name='input' method='post' action='update.do'>
-			<input type="hidden" name="seq" value="17">
+			<input type="hidden" name="id" value="17">
 			<%
 				Board board = (Board)request.getAttribute("board");
 			%>

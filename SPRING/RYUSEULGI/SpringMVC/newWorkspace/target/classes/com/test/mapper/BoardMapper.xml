@@ -7,7 +7,7 @@
 	    select * from BOARD order by id desc
 	</select>
 	<insert id="insert" parameterType="Board">
-		insert into BOARD(writer, email, subject, content, rdate) values(#{writer},#{email},#{subject},#{content}, now())
+		insert into BOARD(writer, email, subject, content) values(#{writer},#{email},#{subject},#{content})
 	</insert>
 	<delete id="delete" parameterType="long">
 	    delete from BOARD where id=#{id}

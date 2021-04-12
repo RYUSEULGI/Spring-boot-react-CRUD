@@ -21,6 +21,8 @@
 			<th>e-mail</th>
 			<th>subject</th>
 			<th>date</th>
+			<th>수정</th>
+			<th>삭제</th>
 		</tr>
 		<%
 			List<Board> list = (List<Board>)request.getAttribute("list");
@@ -29,13 +31,16 @@
 		%>
 		<tr>
 			<td><%= dto.getId()%></td>
+			<td><%= dto.getWriter()%></td>
 			<td><%= dto.getEmail()%></td>
 			<td>
-				<a href="content.do?seq=<%= dto.getId()%>">
+				<a href="content.do?id=<%= dto.getId()%>">
 				<%= dto.getSubject()%>
 				</a>
 			</td>
 			<td><%= dto.getRdate()%></td>
+			<td><a href='update.do?id=<%= dto.getId()%>'>수정</a></td>
+			<td><a href='delete.do?id=<%= dto.getId()%>'>삭제</a></td>
 		</tr>
 		<%
 		    	}

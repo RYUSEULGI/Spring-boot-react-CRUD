@@ -24,20 +24,12 @@
 	</script>
   </head>
   <body onload="input.writer.focus()">
-	<font color="gray" size='4' face="휴먼편지체">
-    <center>
-	   <hr width="650" size='2' color="gray" noshade>
-	      <h3> Spring Board</h3>
-		  	<font color="gray" size="3" face="휴먼편지체">
-			<a href='list.do'>리스트</a>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href='../'>인덱스</a>
-			</font>
-	   <hr width="650" size="2" color="gray" noshade>
-	</center>
+  	<h3> Spring Board</h3>
+  	<a href='list.do'>리스트</a>
+	<a href='../'>인덱스</a>
 
 	<form name="input" method="post" action="write.do">
-	   <table border="0" width="600" align="center"  cellpadding="3" cellspacing="1" bordercolor="gray">
+	   <table>
 	      <tr>
 		     <td width="30%" align="center">WRITER</td>
 			 <td><input type="text" name="writer" size="93"></td>
@@ -61,8 +53,6 @@
 			 </td>
 		  </tr>
 	   </table>
-	   <hr width="650" size="2" color="gray" noshade>
 	</form>
-	</font>
   </body>
 </html>

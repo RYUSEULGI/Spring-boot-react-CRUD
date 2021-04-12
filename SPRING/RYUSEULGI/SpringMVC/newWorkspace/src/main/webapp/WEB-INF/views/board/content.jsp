@@ -11,11 +11,10 @@
 	</head>
 	<body>
 		<h3>Spring Board</h3>
-		<a href='write.do'>글쓰기</a>
 		<%
 			Board board = (Board)request.getAttribute("board");
 		%>
-		<table border='2' width='600' align='center' noshade>
+		<table>
 			<tr>
 				<td width='20%' align='center'>No</td>
 				<td><%= board.getId()%></td>
@@ -37,9 +36,6 @@
 				<td><%= board.getContent()%></td>
 			</tr>
 		</table>
-
-		<a href='update.do?seq=<%= board.getId()%>>'>수정</a>&nbsp;&nbsp;| 
-		<a href='del.do?seq=<%= board.getId()%>>'>삭제</a>&nbsp;&nbsp;| 
 		<a href='list.do'>목록</a>	
 	</body>
 </html> 

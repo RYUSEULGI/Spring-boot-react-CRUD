@@ -48,10 +48,10 @@ public class BoardController {
 	}
 	
 	@GetMapping("/content.do")
-	public ModelAndView getContent(@RequestParam(required = false) long id) {
+	public ModelAndView getContent(@RequestParam long id) {
 		log.info("getContent");
-		Board board = service.read(id);
 		
+		Board board = service.read(id);
 		ModelAndView mv = new ModelAndView("board/content", "board", board);
 		
 		return mv;
@@ -75,7 +75,7 @@ public class BoardController {
 	
 	@GetMapping("/delete.do")
 	public String getDelete(long id) {
-		log.info("getDelete");
+		log.info("getDelete ");
 		service.delete(id);
 		
 		return "redirect:list.do";
