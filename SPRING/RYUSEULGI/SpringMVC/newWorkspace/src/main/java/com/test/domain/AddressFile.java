@@ -8,8 +8,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AddressFile {
-    private int seqf;
+    private long seqf;
     private String ofname;
     private String sfname;
     private long fsize;
+    private long seq;
 }

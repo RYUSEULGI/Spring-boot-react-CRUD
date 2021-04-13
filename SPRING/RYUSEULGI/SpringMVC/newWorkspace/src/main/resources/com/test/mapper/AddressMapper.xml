@@ -4,31 +4,16 @@
     <select id="list" resultType="Address">
 	    select * from ADDRESS order by SEQ desc
 	</select>
-    <insert id="insert" parameterType="Address">
-		insert into ADDRESS(name, addr, rdate) values(#{name}, #{addr}, now())
-	</insert>
-    <delete id="delete" parameterType="long">
+    <delete id="delete" parameterType="Long">
 	    delete from ADDRESS where SEQ=#{seq}
 	</delete>
-<!-- 	<resultMap type="AddressFile" id="AddressFile">
-		<result column="seqf" property="seqf"/>
-		<result column="ofname" property="ofname"/>
-		<result column="sfname" property="sfname"/>
-		<result column="fsize" property="fsize"/>
-	</resultMap>
-	<resultMap type="Address" id="Address">
-		<result column="seq" property="seq"/>
-		<result column="name" property="name"/>
-		<result column="addr" property="addr"/>
-		<result column="rdate" property="rdate"/>
-		<collection property="addressFile" resultMap="addressFile"></collection>
-	</resultMap>
-	<select id="select" parameterType="Address" resultMap="Address">
-		select a.seq, a.name, a.addr, a.rdate, 
-				f.seqf, f.ofname, f.sfname, f.fsize
-		from seq a
-		join seqf f
-		on a.seq = f.seq
-		where a.seq = #{seq}	
-	</select> -->
+	<insert id="insertSelectKey" parameterType="Address">
+	 	<selectKey keyProperty="seq" order="BEFORE" resultType="Long">
+	 		select max(seq)+1 from ADDRESS
+	 	</selectKey>
+		insert into ADDRESS(seq, name, addr, rdate) values(#{seq}, #{name}, #{addr}, now())
+	</insert>
+	<insert id="insertFile" parameterType="AddressFile">
+		insert into ADDRESS_File values(#{seqf}, #{ofname}, #{sfname}, #{fsize}, #{seq})
+	</insert>
 </mapper>
