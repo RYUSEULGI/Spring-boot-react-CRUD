@@ -11,4 +11,5 @@ public interface AddressMapper {
     public void delete(long seq);
     public void insertSelectKey(Address address);
     public void insertFile(AddressFile addrFile);
+    public List<AddressFile> removeBySeq(long seq);
 }

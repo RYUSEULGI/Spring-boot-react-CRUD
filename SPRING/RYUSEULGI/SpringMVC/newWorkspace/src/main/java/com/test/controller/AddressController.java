@@ -15,15 +15,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.test.domain.Address;
 import com.test.service.AddressService;
 
-import lombok.extern.java.Log;
-
-@Log
 @Controller
 @RequestMapping("/address")
 public class AddressController {
 
     @Autowired
     private AddressService addressService;
+    
 
     @GetMapping("/list.do")
     public ModelAndView list() {
@@ -40,20 +38,17 @@ public class AddressController {
     }
 
     @PostMapping("/write.do")
-    public String write(Address address, @RequestParam ArrayList<MultipartFile> files) {
-    	try {
-            addressService.insert(address, files);
-    	}catch(Exception e){
-    		log.info("address write.do error");
-    	}
-
+    public String write(Address address, @RequestParam ArrayList<MultipartFile> files) { 	
+    	addressService.insert(address, files);
+    	
         return "redirect:list.do";
     }
 
     @GetMapping("/del.do")
     public String delete(long seq) {
-        addressService.delete(seq);
-
+        addressService.removeBySeq(seq); // 업로드된 파일 제거
+        addressService.delete(seq);  // DB제거
+        
         return "redirect:list.do";
     }
 }

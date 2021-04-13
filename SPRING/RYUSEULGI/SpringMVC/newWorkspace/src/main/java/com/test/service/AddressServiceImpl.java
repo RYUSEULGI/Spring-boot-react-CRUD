@@ -34,7 +34,7 @@ public class AddressServiceImpl implements AddressService {
     public void delete(long seq) {
         addressMapper.delete(seq);
     }
-
+    
 	@Override
 	@Transactional
 	public void insert(Address address, ArrayList<MultipartFile> files) {
@@ -44,13 +44,13 @@ public class AddressServiceImpl implements AddressService {
 		for(MultipartFile file: files) {
 			String ofname = file.getOriginalFilename();
 			
-			if(ofname != null) ofname= ofname.trim();
+			if(ofname != null) ofname = ofname.trim();
 			if(ofname.length() != 0) {
-				AddressFile addrFile = saveStore(file);
+				AddressFile addressFile = saveStore(file);
 				
-				if(addrFile != null) {
-					addrFile.setSeq(address.getSeq());
-					addressMapper.insertFile(addrFile);
+				if(addressFile != null) {
+					addressFile.setSeq(address.getSeq());
+					addressMapper.insertFile(addressFile);
 				}
 			}
 		}
@@ -110,6 +110,24 @@ public class AddressServiceImpl implements AddressService {
 			} catch(IOException e) {
 				
 			}
+		}
+	}
+
+	@Override
+	public void remove() {
+		List<AddressFile> uploadFile = new ArrayList<>();
+		for(AddressFile addrFile: uploadFile) {
+			File file = new File(Path.FILE_STORE, addrFile.getSfname());
+			if(file.exists()) file.delete();
+		}
+	}
+
+	@Override
+	public void removeBySeq(long seq) {
+		List<AddressFile> list = addressMapper.removeBySeq(seq);
+		for(AddressFile addrFile: list) {
+			File file = new File(Path.FILE_STORE, addrFile.getSfname());
+			if(file.exists()) file.delete();
 		}
 	}
 

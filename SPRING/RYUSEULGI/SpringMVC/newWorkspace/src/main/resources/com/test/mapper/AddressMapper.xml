@@ -7,13 +7,20 @@
     <delete id="delete" parameterType="Long">
 	    delete from ADDRESS where SEQ=#{seq}
 	</delete>
-	<insert id="insertSelectKey" parameterType="Address">
-	 	<selectKey keyProperty="seq" order="BEFORE" resultType="Long">
-	 		select max(seq)+1 from ADDRESS
-	 	</selectKey>
+	<select id="removeBySeq" parameterType="Long" resultType="AddressFile">
+	    select * from ADDRESS_File where SEQ=#{seq}
+	</select>
+	<insert id="insertSelectKey" parameterType="Address" useGeneratedKeys="true">
+		<selectKey keyProperty="seq" order="BEFORE" resultType="Long">
+			select ifnull(max(seq)+ 1,1) from ADDRESS
+		</selectKey>
 		insert into ADDRESS(seq, name, addr, rdate) values(#{seq}, #{name}, #{addr}, now())
 	</insert>
 	<insert id="insertFile" parameterType="AddressFile">
-		insert into ADDRESS_File values(#{seqf}, #{ofname}, #{sfname}, #{fsize}, #{seq})
+		insert into ADDRESS_File(ofname, sfname, fsize, seq) values(#{ofname}, #{sfname}, #{fsize}, #{seq})
 	</insert>
 </mapper>
+
+
+
+
