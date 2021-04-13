@@ -13,9 +13,9 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl extends AbstractService<User> implements UserService{
+public class UserServiceImpl extends AbstractService<User> implements UserService {
 	private final UserRepository userRepo;
-	
+
 	@Override
 	public List<User> findAll() {
 		return userRepo.findAll();
@@ -25,17 +25,12 @@ public class UserServiceImpl extends AbstractService<User> implements UserServic
 	public User save(User entity) {
 		return userRepo.save(entity);
 	}
-	
+
 	@Override
 	public Optional<User> findById(long id) {
 		return userRepo.findById(id);
 	}
-	
-	@Override
-	public User findOne(long id) {
-		return null;
-	}
-	
+
 	@Override
 	public long count() {
 		return userRepo.count();

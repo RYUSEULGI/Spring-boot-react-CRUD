@@ -33,11 +33,10 @@ public class Item {
 
 	@Column(name = "release_date")
 	private String releaseDate;
-	
+
 	@Column(name = "sold_out")
 	private Boolean soldOut;
-	
-	@OneToMany(mappedBy = "item")
-	private List<OrderItem> orderItem = new ArrayList<>();
-	
+
+	 @OneToMany(mappedBy = "item")
+	 private List<OrderItem> orderItem = new ArrayList<>();
 }

@@ -27,9 +27,18 @@ const Home = () => {
             <button onClick={() => history.push('/items/list')}>
                 아이템리스트
             </button>
-            <Link to="/signup">
-                <button>회원가입</button>
-            </Link>
+            {
+                !isloggedin &&
+                <Link to="/signup">
+                    <button>회원가입</button>
+                </Link>
+            }
+            {
+                isloggedin &&
+                <Link to="/myPage">
+                    <button>마이페이지</button>
+                </Link>
+            }
             <CheckLogIn isloggedin={isloggedin} />
         </div>
     );

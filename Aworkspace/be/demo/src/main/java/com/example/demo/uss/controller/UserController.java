@@ -16,45 +16,44 @@ import com.example.demo.uss.service.UserServiceImpl;
 
 import lombok.RequiredArgsConstructor;
 
-
 @Controller
 @RequiredArgsConstructor
-@RequestMapping(value="/users")
-@CrossOrigin(origins="*", allowedHeaders = "*")
+@RequestMapping(value = "/users")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
 	private final UserServiceImpl userService;
-	
+
 	@GetMapping("/list")
-	public ResponseEntity<List<User>> findAll(){
+	public ResponseEntity<List<User>> findAll() {
 		System.out.println("getUSerList()");
 
 		return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
 	}
-	
+
 	@PostMapping("")
-	public ResponseEntity<?> doCreate(@RequestBody User user){
+	public ResponseEntity<?> doCreate(@RequestBody User user) {
 		System.out.println("doUserCreate()" + user.toString());
 		userService.save(user);
-		
+
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/login")
-	public ResponseEntity<List<User>> findAllUser(){
+	public ResponseEntity<List<User>> findAllUser() {
 		System.out.println("getUserList()");
 
 		return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
 	}
-	
+
 	@PostMapping("/login")
-	public ResponseEntity<String> doLogin(@RequestBody User user){
+	public ResponseEntity<String> doLogin(@RequestBody User user) {
 		System.out.println("doItemCreate()");
-		
+
 		String userLogin = userService.login(user.getUsername(), user.getPassword());
-		
-		if(userLogin != null) {
+
+		if (userLogin != null) {
 			System.out.println("login");
-			
+
 			return new ResponseEntity<>(HttpStatus.OK);
 		} else {
 			System.err.println("login error");

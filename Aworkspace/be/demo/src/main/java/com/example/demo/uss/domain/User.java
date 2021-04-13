@@ -7,9 +7,12 @@ import javax.persistence.*;
 
 import com.example.demo.order.domain.OrderItem;
 
+import lombok.Data;
+
+@Data
 @Entity
-@Table(name="users")
-public class User{
+@Table(name = "users")
+public class User {
 
     @Id
     @Column(name = "user_id")
@@ -21,16 +24,16 @@ public class User{
 
     @Column(name = "password")
     private String password;
-    
+
     @Column(name = "name")
     private String name;
-    
+
     @Column(name = "email")
     private String email;
-    
+
     @Column(name = "reg_date")
     private String regDate;
-    
-    @OneToMany(mappedBy="user")
-    private List<OrderItem> orderItem = new ArrayList<>();
+
+     @OneToMany(mappedBy="user")
+     private List<OrderItem> orderItem = new ArrayList<>();
 }
